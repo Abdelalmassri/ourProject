@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,18 +17,34 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.abdel.mijnproject.Dashboard;
 import com.abdel.mijnproject.R;
+import com.abdel.mijnproject.data.entities.User;
+import com.abdel.mijnproject.repository.UserRepositoryInterface;
+import com.abdel.mijnproject.utils.DialogUtils;
+import com.abdel.mijnproject.utils.Session;
 
 public class LoginActivity extends Activity {
 
     Button btn_login;
     TextView btn_signup, txt_forgot_password;
+    EditText txt_email, txt_password;
+
+    private UserRepositoryInterface loginRepositoryInterface;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        if(Session.isLogin(LoginActivity.this)){
+            startActivity(new Intent(LoginActivity.this,Dashboard.class));
+            finish();
+        }
+
         btn_login= findViewById(R.id.btn_login);
         btn_signup= findViewById(R.id.btn_signup);
+        txt_email= findViewById(R.id.txt_email);
+        txt_password= findViewById(R.id.txt_password);
         txt_forgot_password=findViewById(R.id.txt_forgot_password);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +67,33 @@ public class LoginActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        private void login() {
+            String emilId = txt_email.getText().toString();
+            String password = txt_password.getText().toString();
+            loginRepositoryInterface.login(emilId, password, new UserRepositoryInterface() {
+
+
+                @Override
+                public void login(String email, String password, ValidateCallBack validateCallBack) {
+
+                }
+
+                @Override
+                public void validateUser(String emailId, String dob, ValidateCallBack validateCallBack) {
+
+                }
+
+                @Override
+                public void changePassword(String emailid, String newPassword, SaveCallBack callback) {
+
+                }
+
+                @Override
+                public void signUp(User user, SaveCallBack saveCallBack) {
+
+                }
+
 
     }
 }
