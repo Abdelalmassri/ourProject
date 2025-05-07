@@ -12,7 +12,7 @@ import com.abdel.mijnproject.data.entities.User;
 import com.abdel.mijnproject.data.dao.UserDao;
 import com.abdel.mijnproject.data.entities.User;
 
-@Database(entities = {User.class}, version =1 , exportSchema = false )
+@Database(entities = {User.class}, version =2 , exportSchema = false )
 public abstract class AppDatabase extends  RoomDatabase {
 
     public abstract UserDao userDao();

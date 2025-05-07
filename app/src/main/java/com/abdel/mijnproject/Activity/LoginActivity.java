@@ -75,7 +75,7 @@ public class LoginActivity extends Activity {
                     @Override
                     public void onSuccess(User user) {
                         Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-//                Session.saveUserDetail(getApplicationContext(),user);
+                        Session.saveUserDetail(getApplicationContext(),user);
                         startHomepage();
                     }
 

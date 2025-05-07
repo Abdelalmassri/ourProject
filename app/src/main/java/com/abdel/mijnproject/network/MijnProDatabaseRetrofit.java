@@ -32,6 +32,7 @@ public class MijnProDatabaseRetrofit {
             }
         }
         return retrofit;
+
     }
 
     public static MijnProAbdelInterface getMijnProApiInterface() {

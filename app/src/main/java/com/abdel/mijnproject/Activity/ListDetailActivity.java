@@ -33,7 +33,7 @@ public class ListDetailActivity extends Activity {
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ListDetailActivity.this, ProfilePage.class));
+                startActivity(new Intent(ListDetailActivity.this, ProfileActivity.class));
                 finish();
             }
         });

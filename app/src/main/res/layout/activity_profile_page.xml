@@ -15,7 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"
             android:gravity="center_horizontal">
 
             <!-- Top bar -->
@@ -44,7 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Dashboard"
+                    android:text="PROFILE PAGE"
                     android:textColor="@android:color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -59,9 +58,10 @@
                     android:id="@+id/profilePic"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/circle_background"
                     android:background="@drawable/circle_background"
-                    android:scaleType="centerInside" />
+                    android:scaleType="centerInside"
+                    android:layout_margin="@dimen/_10dp"
+                    android:src="@drawable/circle_background" />
 
                 <ImageView
                     android:layout_width="32dp"
@@ -72,7 +72,6 @@
                     android:layout_margin="4dp" />
             </RelativeLayout>
 
-            <!-- Profile Info -->
             <LinearLayout style="@style/ProfileItem">
                 <TextView style="@style/ProfileLabel" android:text="First name *" />
                 <TextView android:id="@+id/tvName" style="@style/ProfileValue" />
@@ -88,7 +87,6 @@
                 <TextView android:id="@+id/tvEmail" style="@style/ProfileValue" />
             </LinearLayout>
 
-            <!-- Buttons -->
             <Button
                 android:id="@+id/btnEdit"
                 android:layout_width="match_parent"
