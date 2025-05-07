@@ -7,12 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.abdel.mijnproject.Activity.AddList;
-import com.abdel.mijnproject.Activity.FavoritePage;
+//import com.abdel.mijnproject.Activity.favorite;
 import com.abdel.mijnproject.Activity.ListDetailActivity;
-import com.abdel.mijnproject.Activity.ProfilePage;
 
 import java.util.ArrayList;
 
@@ -32,7 +30,7 @@ public class Dashboard extends Activity {
         btn_favorite = findViewById(R.id.btn_favorite);
         btn_menu = findViewById(R.id.btn_menu);
         btn_add = findViewById(R.id.btn_add);
-        listsContainer = findViewById(R.id.lists_container);
+       // listsContainer = findViewById(R.id.li);
 
         refreshLists();
 
@@ -58,12 +56,12 @@ public class Dashboard extends Activity {
             }
         });
 
-        btn_favorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Dashboard.this, FavoritePage.class));
-            }
-        });
+//        btn_favorite.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(Dashboard.this, fa.class));
+//            }
+//        });
     }
 
     private void refreshLists() {

@@ -56,7 +56,7 @@ public class AddList extends Activity {
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AddList.this, ProfilePage.class));
+                startActivity(new Intent(AddList.this, ProfileActivity.class));
                 finish();
             }
         });
