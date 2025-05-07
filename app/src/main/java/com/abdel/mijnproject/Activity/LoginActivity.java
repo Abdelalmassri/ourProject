@@ -18,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.abdel.mijnproject.Dashboard;
 import com.abdel.mijnproject.R;
 import com.abdel.mijnproject.data.entities.User;
+import com.abdel.mijnproject.repository.OnlineUserRepository;
 import com.abdel.mijnproject.repository.UserRepositoryInterface;
 import com.abdel.mijnproject.utils.DialogUtils;
 import com.abdel.mijnproject.utils.Session;
@@ -46,13 +47,7 @@ public class LoginActivity extends Activity {
         txt_email= findViewById(R.id.txt_email);
         txt_password= findViewById(R.id.txt_password);
         txt_forgot_password=findViewById(R.id.txt_forgot_password);
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, Dashboard.class);
-                startActivity(intent);
-            }
-        });
+        loginRepositoryInterface=new OnlineUserRepository();
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,33 +62,36 @@ public class LoginActivity extends Activity {
                 startActivity(intent);
             }
         });
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                login();
+            }
 
-        private void login() {
-            String emilId = txt_email.getText().toString();
-            String password = txt_password.getText().toString();
-            loginRepositoryInterface.login(emilId, password, new UserRepositoryInterface() {
+            private void login() {
+                String emailtId = txt_email.getText().toString();
+                String password = txt_password.getText().toString();
+                loginRepositoryInterface.login(emailtId, password, new UserRepositoryInterface.ValidateCallBack() {
+                    @Override
+                    public void onSuccess(User user) {
+                        Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+//                Session.saveUserDetail(getApplicationContext(),user);
+                        startHomepage();
+                    }
 
+                    @Override
+                    public void onError(String errormessage) {
+                        DialogUtils.showOkDialog(LoginActivity.this,"Error",errormessage);
+                    }
+                } );
+            }
 
-                @Override
-                public void login(String email, String password, ValidateCallBack validateCallBack) {
-
-                }
-
-                @Override
-                public void validateUser(String emailId, String dob, ValidateCallBack validateCallBack) {
-
-                }
-
-                @Override
-                public void changePassword(String emailid, String newPassword, SaveCallBack callback) {
-
-                }
-
-                @Override
-                public void signUp(User user, SaveCallBack saveCallBack) {
-
-                }
-
+            private void startHomepage() {
+                Intent intent = new Intent(LoginActivity.this, Dashboard.class);
+                startActivity(intent);
+                finish(); // Close login activity
+            }
+        });
 
     }
 }

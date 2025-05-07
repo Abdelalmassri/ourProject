@@ -31,9 +31,9 @@ public class LocalLoginRepository implements UserRepositoryInterface {
 
 
     @Override
-    public void login(String cnic, String password, ValidateCallBack validateCallBack) {
+    public void login(String email, String password, ValidateCallBack validateCallBack) {
         executorService.execute(() ->{
-            User user=userDao.getUserByIdAndPassword(cnic,password);
+            User user=userDao.getUserByIdAndPassword(email,password);
             if(user != null){
                 new Handler(Looper.getMainLooper()).post(()-> validateCallBack.onSuccess(user));
             }
@@ -44,9 +44,9 @@ public class LocalLoginRepository implements UserRepositoryInterface {
     }
 
     @Override
-    public void validateUser(String passportId, String dob, ValidateCallBack validateCallBack) {
+    public void validateUser(String emailId, String dob, ValidateCallBack validateCallBack) {
         executorService.execute(() ->{
-            User user=userDao.getUserByEmailIDAndDob(passportId,dob);
+            User user=userDao.getUserByEmailIDAndDob(emailId,dob);
             if(user != null){
                 new Handler(Looper.getMainLooper()).post(()-> validateCallBack.onSuccess(user));
             }
@@ -57,9 +57,9 @@ public class LocalLoginRepository implements UserRepositoryInterface {
     }
 
     @Override
-    public void changePassword(String passportid, String newPassword, SaveCallBack callback) {
+    public void changePassword(String emailid, String newPassword, SaveCallBack callback) {
         executorService.execute(() ->{
-            int  updateCount=userDao.updateUserPassword(passportid,newPassword);
+            int  updateCount=userDao.updateUserPassword(emailid,newPassword);
             if(updateCount > 0){
                 new Handler(Looper.getMainLooper()).post(()-> callback.onSuccess());
             }
