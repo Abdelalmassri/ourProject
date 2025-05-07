@@ -9,99 +9,119 @@
     <include layout="@layout/toolbar_layout"/>
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_margin="8dp"
         android:id="@+id/scrollview"
-        android:layout_below="@+id/toolbar">
-
-
-
+        android:layout_below="@+id/toolbar"
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-
+            android:orientation="vertical"
+            >
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name"
+                android:fontFamily="@font/mo_re"
                 style="@style/aut_sig_p_text"
-                android:textColor="@color/white"
-                >
-            </TextView>
-
+                android:textColor="@color/white"/>
             <EditText
                 android:id="@+id/txt_name"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/mo_re"
+                android:hint="Enter Name"
+                android:background="@drawable/edit_text_bg"
+                android:backgroundTint="@color/green_light"
                 style="@style/aut_sig_p_input_field"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter ur name"
-                android:background="#79bdb5">
-            </EditText>
-
+                />
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="DOB"
                 android:textColor="@color/white"
-                style="@style/aut_sig_p_text">
-            </TextView>
-
+                android:fontFamily="@font/mo_re"
+                style="@style/aut_sig_p_text" />
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/txt_dob"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
                 android:hint="Select DOB"
-                android:background="#79bdb5"
-                style="@style/aut_sig_p_input_field">
-            </EditText>
+                android:inputType="date"
+                android:focusable="false"
+                android:clickable="true"
+                android:maxLength="10"
+                android:textDirection="locale"
+                android:textAlignment="viewStart"
+                android:fontFamily="@font/mo_re"
+                style="@style/aut_sig_p_input_field"
+                android:backgroundTint="@color/green_light"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="@color/white"
+                android:fontFamily="@font/mo_re"
+                style="@style/aut_sig_p_text" />
+            <EditText
+                android:id="@+id/txt_email"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/mo_re"
+                android:hint="Enter Email"
+                android:background="@drawable/edit_text_bg"
+                android:backgroundTint="@color/green_light"
+                style="@style/aut_sig_p_input_field"
+                />
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Password"
                 android:textColor="@color/white"
-                style="@style/aut_sig_p_text">
-            </TextView>
-
+                android:fontFamily="@font/mo_re"
+                style="@style/aut_sig_p_text" />
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/txt_password"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/mo_re"
                 android:hint="Enter Password"
-                android:background="#79bdb5"
-                style="@style/aut_sig_p_input_field">
-            </EditText>
-
+                android:inputType="textPassword"
+                android:background="@drawable/edit_text_bg"
+                android:backgroundTint="@color/green_light"
+                style="@style/aut_sig_p_input_field"
+                />
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password"
+                android:text="Conform Password"
+                android:fontFamily="@font/mo_re"
                 android:textColor="@color/white"
-                style="@style/aut_sig_p_text">
-            </TextView>
-
+                style="@style/aut_sig_p_text" />
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txt_conpass"
-                android:background="#79bdb5"
-                android:hint="Enter Confrim Password"
-                style="@style/aut_sig_p_input_field">
-            </EditText>
+                android:id="@+id/txt_cofpass"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/mo_re"
+                android:hint="Enter Password"
+                android:inputType="textPassword"
+                android:background="@drawable/edit_text_bg"
+                android:backgroundTint="@color/green_light"
+                style="@style/aut_sig_p_input_field"
+                />
 
             <Button
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
                 android:id="@+id/btn_signup"
-                style="@style/Animation.Design.BottomSheetDialog"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_25sp"
-                android:text="Sign Up">
+                android:text="Sign Up"
+                >
 
             </Button>
+
         </LinearLayout>
     </ScrollView>
     <ProgressBar

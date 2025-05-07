@@ -15,7 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.abdel.mijnproject.Activity.LoginActivity;
-import com.abdel.mijnproject.Activity.SingupActivity;
+import com.abdel.mijnproject.Activity.SignupActivity;
 
 public class SplashActivity extends Activity {
 
@@ -37,7 +37,7 @@ public class SplashActivity extends Activity {
             public void run() {
                 Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intent);
-                finish(); // Close splash screen activity so user can't return to it
+                finish();
             }
         }, SPLASH_SCREEN_TIME_OUT);
 
