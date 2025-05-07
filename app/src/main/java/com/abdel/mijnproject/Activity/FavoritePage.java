@@ -32,6 +32,7 @@ public class FavoritePage extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(FavoritePage.this, ProfilePage.class));
+                // halloo
             }
         });
     }
