@@ -12,6 +12,7 @@ import android.widget.Toolbar;
 
 import com.abdel.mijnproject.R;
 import com.abdel.mijnproject.data.entities.User;
+import com.abdel.mijnproject.repository.LocalLoginRepository;
 import com.abdel.mijnproject.repository.OnlineUserRepository;
 import com.abdel.mijnproject.repository.UserRepositoryInterface;
 import com.abdel.mijnproject.utils.DialogUtils;
@@ -40,7 +41,10 @@ public class SignupActivity extends Activity {
         txt_password = findViewById(R.id.txt_password);
         txt_cofpass = findViewById(R.id.txt_cofpass);
         btn_signup = findViewById(R.id.btn_signup);
-        userRepositoryInterface=new OnlineUserRepository();
+
+        // here i can change the databese to OnlineDatedate
+        userRepositoryInterface = new LocalLoginRepository(SignupActivity.this);
+
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +57,8 @@ public class SignupActivity extends Activity {
                 String email = txt_email.getText().toString().trim();
                 String password = txt_password.getText().toString().trim();
                 String cofpass = txt_cofpass.getText().toString().trim();
-                if(validateFrom()){
+
+                if (validateForm()) {
                     userRepositoryInterface.signUp(new User(name, dob, email, password), new UserRepositoryInterface.SaveCallBack() {
                         @Override
                         public void onSuccess() {
@@ -69,13 +74,13 @@ public class SignupActivity extends Activity {
                 }
             }
 
-            private boolean validateFrom() {
+            private boolean validateForm() {
                 boolean isValid = true;
 
                 // Retrieve data from form fields
                 String name = txt_name.getText().toString().trim();
                 String age = txt_dob.getText().toString();
-                String email = txt_email.toString(); // Assuming you are using MaskedEditText
+                String email = txt_email.getText().toString().trim();
                 String password = txt_password.getText().toString();
                 String confirmPassword = txt_cofpass.getText().toString();
 
@@ -92,12 +97,11 @@ public class SignupActivity extends Activity {
                     isValid = false;
                 }
 
-                if (!name.matches("[a-zA-Z ]+")) {
-                    txt_name.setError("alphabetic characters only");
+                // Check if Name contains only alphabetic characters
+                if (!name.matches("[\\p{L} .'-]+")) {
+                    txt_name.setError("Invalid characters in name");
                     isValid = false;
-
                 }
-
 
                 // Check if DOB field is empty
                 if (TextUtils.isEmpty(age)) {
@@ -105,9 +109,9 @@ public class SignupActivity extends Activity {
                     isValid = false;
                 }
 
-                // Check if CNIC field is empty
+                // Check if Email field is empty
                 if (TextUtils.isEmpty(email)) {
-                    txt_email.setError("email is required");
+                    txt_email.setError("Email is required");
                     isValid = false;
                 }
 
@@ -118,7 +122,7 @@ public class SignupActivity extends Activity {
                 }
 
                 if (password.length() < 4) {
-                    txt_password.setError("Password is very short");
+                    txt_password.setError("Password is too short");
                     isValid = false;
                 }
 
@@ -135,11 +139,10 @@ public class SignupActivity extends Activity {
                 }
 
                 return isValid;
-
             }
 
         });
-        
+
         txt_dob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -154,18 +157,12 @@ public class SignupActivity extends Activity {
         });
     }
 
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) {
+        if (item.getItemId() == android.R.id.home) {
             onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-    
-    
-    
-
 }

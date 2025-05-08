@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/green_dark"
-    android:theme="@style/Theme.MijnProject.."
+    android:theme="@style/Theme.MijnProject"
     android:titleTextColor="@color/white"
     android:navigationIcon="@drawable/ic_arrow_back_white_24dp"
     >

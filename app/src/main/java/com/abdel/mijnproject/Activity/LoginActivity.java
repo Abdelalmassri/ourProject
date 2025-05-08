@@ -18,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.abdel.mijnproject.Dashboard;
 import com.abdel.mijnproject.R;
 import com.abdel.mijnproject.data.entities.User;
+import com.abdel.mijnproject.repository.LocalLoginRepository;
 import com.abdel.mijnproject.repository.OnlineUserRepository;
 import com.abdel.mijnproject.repository.UserRepositoryInterface;
 import com.abdel.mijnproject.utils.DialogUtils;
@@ -47,7 +48,7 @@ public class LoginActivity extends Activity {
         txt_email= findViewById(R.id.txt_email);
         txt_password= findViewById(R.id.txt_password);
         txt_forgot_password=findViewById(R.id.txt_forgot_password);
-        loginRepositoryInterface=new OnlineUserRepository();
+        loginRepositoryInterface=new LocalLoginRepository(LoginActivity.this);
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
