@@ -1,2 +1,0 @@
-# ourProject
-ik en mohammed
